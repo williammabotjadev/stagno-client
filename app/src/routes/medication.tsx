@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
 import DrawerAppBar from '../components/homeBar';
 import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
@@ -22,28 +22,57 @@ function Documents() {
 
   return (
     <> 
-    <Box>
+    <Box component="div">
       <DrawerAppBar />
-      <Form.Group controlId="formFileLg" className="mt-lg-5" style={{
-        marginLeft: '672px',
-        marginTop: '204px'
-      }}>
-        <Form.Label>Please Upload Your Document</Form.Label>
-        <br />
-        <Form.Control type="file" size="lg" style={{
-            background: '#3d9ae8',
-            color: 'white',
-            height: '10%'
-        }} 
-        onChange={handleFile}/>
-        <br />
-        {hasDoc ? (
-        <>
-        <Button variant="contained">
-            Upload Document
+      <Box component="div"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+          marginTop: '264px',
+          padding: '20px'
+        }}
+      >
+        <Typography variant="h4" style={{ marginBottom: '20px' }}>
+            Which Medications have you taken Today?
+        </Typography>
+        <TextField
+          id="standard-multiline-flexible"
+          label="Entry Title"
+          placeholder="Enter a title for your entry"
+          multiline
+          maxRows={4}
+          variant="standard"
+          style={{ width: '75%' }}
+        />
+        <TextField
+          id="standard-multiline-static"
+          label="Content"
+          multiline
+          rows={4}
+          placeholder="e.g. Today I took 2 Tylenol and 1 Advil."
+          variant="standard"
+          style={{
+            marginTop: '40px',
+            width: '75%'
+          }}
+        />
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: '#23408e',
+            color: '#fff',
+            width: '240px',
+            height: '80px',
+            fontSize: '24px',
+            marginTop: '40px'
+          }}
+        >
+          Submit
         </Button>
-        </>) : null}
-      </Form.Group>
+      </Box>
     </Box>
     </>
   );
