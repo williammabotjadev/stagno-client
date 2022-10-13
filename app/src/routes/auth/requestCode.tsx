@@ -8,11 +8,14 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
+import Link from '@mui/material/Link'
 
 import { useValidUsername } from '../../hooks/useAuthHooks'
 import { Username } from '../../components/authComponents'
 
 import { AuthContext } from '../../contexts/authContext'
+import Logo from '../../images/logo.png'
+import RequestCodeBg from '../../images/request.jpg'
 
 const useStyles = makeStyles({
   root: {
@@ -90,12 +93,23 @@ export default function RequestCode() {
   )
 
   return (
-    <Grid className={classes.root} container direction="row" justify="center" alignItems="center">
+    <Grid className={classes.root} container direction="row" justify="center" alignItems="center" style={{
+      backgroundImage: `url(${RequestCodeBg})`,
+    }}>
       <Grid xs={11} sm={6} lg={4} container direction="row" justify="center" alignItems="center" item>
         <Paper style={{ width: '100%', padding: 32 }}>
-          <Grid container direction="column" justify="center" alignItems="center">
+          <Grid container direction="column" justify="center" alignItems="center" style={{
+            height: '100vh'
+          }}>
             <Box m={2}>
-              <Typography variant="h3">Send Reset Code</Typography>
+                <Link href="/">
+                  <img style={{
+                    marginLeft: '120px'
+                  }} width={"42%"} src={Logo} alt="logo" />
+                </Link>
+              <Typography variant="h3" style={{
+                marginLeft: '72px'
+              }}>Send Reset Code</Typography>
             </Box>
 
             {resetSent ? emailSent : sendCode}

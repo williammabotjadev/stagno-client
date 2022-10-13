@@ -8,11 +8,15 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
+import Link from '@mui/material/Link'
 
 import { useValidCode, useValidUsername } from '../../hooks/useAuthHooks'
 import { Code, Username } from '../../components/authComponents'
 
 import { AuthContext } from '../../contexts/authContext'
+import Logo from '../../images/logo.png'
+
+import VerifyBg from '../../images/verify.jpg'
 
 const useStyles = makeStyles({
   root: {
@@ -50,13 +54,24 @@ const VerifyCode: React.FunctionComponent<{}> = () => {
   }
 
   return (
-    <Grid className={classes.root} container direction="row" justify="center" alignItems="center">
+    <Grid className={classes.root} container direction="row" justify="center" alignItems="center" style={{
+      backgroundImage: `url(${VerifyBg})`
+    }}>
       <Grid xs={11} sm={6} lg={4} container direction="row" justify="center" alignItems="center" item>
         <Paper style={{ width: '100%', padding: 32 }}>
-          <Grid container direction="column" justify="center" alignItems="center">
+          <Grid container direction="column" justify="center" alignItems="center" style={{
+            height: '100vh'
+          }}>
             {/* Title */}
             <Box m={2}>
-              <Typography variant="h3">Send Code</Typography>
+                <Link href="/">
+                  <img style={{
+                    marginLeft: '120px'
+                  }} width={"42%"} src={Logo} alt="logo" />
+                </Link>
+              <Typography variant="h3" style={{
+                marginLeft: '120px'
+              }}>Send Code</Typography>
             </Box>
 
             {/* Sign In Form */}
