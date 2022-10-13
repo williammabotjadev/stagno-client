@@ -8,11 +8,14 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
+import Link from '@mui/material/Link'
 
 import { useValidEmail, useValidPassword, useValidUsername } from '../../hooks/useAuthHooks'
 import { Email, Password, Username } from '../../components/authComponents'
 
 import { AuthContext } from '../../contexts/authContext'
+import Logo from '../../images/logo.png'
+import SignUpBg from '../../images/signup.jpg'
 
 const useStyles = makeStyles({
   root: {
@@ -84,12 +87,18 @@ const SignUp: React.FunctionComponent<{}> = () => {
       <Box mt={2}>
         <Grid container direction="row" justify="center">
           <Box m={1}>
-            <Button onClick={() => history.goBack()} color="secondary" variant="contained">
+            <Button onClick={() => history.goBack()} style={{
+                    color: 'white',
+                    backgroundColor: '#ed1b24'
+                  }}  variant="contained">
               Cancel
             </Button>
           </Box>
           <Box m={1}>
-            <Button disabled={isValid} color="primary" variant="contained" onClick={signInClicked}>
+            <Button disabled={isValid} style={{
+                    color: 'white',
+                    backgroundColor: isValid ? '#cccccc' : '#23408e'
+                  }} variant="contained" onClick={signInClicked}>
               Sign Up
             </Button>
           </Box>
@@ -112,13 +121,22 @@ const SignUp: React.FunctionComponent<{}> = () => {
   )
 
   return (
-    <Grid className={classes.root} container direction="row" justify="center" alignItems="center">
+    <Grid className={classes.root} container direction="row" justify="center" alignItems="center" style={{
+      backgroundImage: `url(${SignUpBg})`,
+    }}>
       <Grid xs={11} sm={6} lg={4} container direction="row" justify="center" alignItems="center" item>
         <Paper style={{ width: '100%', padding: 16 }}>
-          <Grid container direction="column" justify="center" alignItems="center">
+          <Grid container direction="column" justify="center" alignItems="center" style={{
+            height: '100vh'
+          }}>
             {/* Title */}
             <Box m={3}>
               <Grid container direction="row" justify="center" alignItems="center">
+                <Link href="/">
+                  <img width={"40%"} src={Logo} alt="logo" style={{
+                    marginLeft: '148px',
+                  }} />
+                </Link>
                 <Typography variant="h3">Sign Up</Typography>
               </Grid>
             </Box>
