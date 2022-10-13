@@ -44,7 +44,7 @@ const Landing: React.FunctionComponent = () => {
        <DrawerAppBar />
         <Box m={2}>
           <Button onClick={signIn} variant="contained" style={{
-            backgroundColor: '#3d9ae8',
+            backgroundColor: '#23408e',
             color: '#fff',
             width: '240px',
             height: '80px',
@@ -53,7 +53,7 @@ const Landing: React.FunctionComponent = () => {
             SIGN IN
           </Button>
           <Button onClick={signUp} variant="contained" style={{
-            backgroundColor: '#6c7cfb',
+            backgroundColor: '#385399',
             color: '#fff',
             width: '240px',
             height: '80px',
