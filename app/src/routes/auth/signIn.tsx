@@ -8,11 +8,14 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
+import Link from '@mui/material/Link'
 
 import { useValidPassword, useValidUsername } from '../../hooks/useAuthHooks'
 import { Password, Username } from '../../components/authComponents'
 
 import { AuthContext } from '../../contexts/authContext'
+import Logo from '../../images/logo.png'
+import SignInBg from '../../images/signin.jpg'
 
 const useStyles = makeStyles({
   root: {
@@ -54,13 +57,24 @@ const SignIn: React.FunctionComponent<{}> = () => {
   }
 
   return (
-    <Grid className={classes.root} container direction="row" justify="center" alignItems="center">
+    <Grid className={classes.root} container direction="row" justify="center" alignItems="center" style={{
+      backgroundImage: `url(${SignInBg})`,
+    }}>
       <Grid xs={11} sm={6} lg={4} container direction="row" justify="center" alignItems="center" item>
         <Paper style={{ width: '100%', padding: 32 }}>
-          <Grid container direction="column" justify="center" alignItems="center">
+          <Grid container direction="column" justify="center" alignItems="center" style={{
+            height: '100vh'
+          }}>
             {/* Title */}
             <Box m={2}>
-              <Typography variant="h3">Sign in</Typography>
+                <Link href="/">
+                  <img style={{
+                    marginLeft: '120px'
+                  }} width={"42%"} src={Logo} alt="logo" />
+                </Link>
+              <Typography variant="h3" style={{
+                marginLeft: '156px'
+              }}>Sign in</Typography>
             </Box>
 
             {/* Sign In Form */}
@@ -90,12 +104,18 @@ const SignIn: React.FunctionComponent<{}> = () => {
             <Box mt={2}>
               <Grid container direction="row" justify="center">
                 <Box m={1}>
-                  <Button color="secondary" variant="contained" onClick={() => history.goBack()}>
+                  <Button style={{
+                    color: 'white',
+                    backgroundColor: '#ed1b24'
+                  }} variant="contained" onClick={() => history.goBack()}>
                     Cancel
                   </Button>
                 </Box>
                 <Box m={1}>
-                  <Button disabled={isValid} color="primary" variant="contained" onClick={signInClicked}>
+                  <Button disabled={isValid} style={{
+                    color: 'white',
+                    backgroundColor: '#23408e'
+                  }} variant="contained" onClick={signInClicked}>
                     Sign In
                   </Button>
                 </Box>

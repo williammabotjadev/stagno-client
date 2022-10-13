@@ -16,6 +16,7 @@ import ForgotPassword from './routes/auth/forgotPassword'
 import ChangePassword from './routes/auth/changePassword'
 import Landing from './routes/landing'
 import Home from './routes/home'
+import HowItWorks from './routes/howItWorks'
 
 let lightTheme = createMuiTheme({
   palette: {
@@ -38,6 +39,7 @@ const SignInRoute: React.FunctionComponent = () => (
       <Route path="/signup" component={SignUp} />
       <Route path="/verify" component={VerifyCode} />
       <Route path="/requestcode" component={RequestCode} />
+      <Route path="/how-it-works" component={HowItWorks} />
       <Route path="/forgotpassword" component={ForgotPassword} />
       <Route path="/" component={Landing} />
     </Switch>
