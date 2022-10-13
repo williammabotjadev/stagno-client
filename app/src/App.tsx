@@ -17,6 +17,9 @@ import ChangePassword from './routes/auth/changePassword'
 import Landing from './routes/landing'
 import Home from './routes/home'
 import HowItWorks from './routes/howItWorks'
+import Medication from './routes/medication'
+import Prescriptions from './routes/prescriptions'
+import Settings from './routes/settings'
 
 let lightTheme = createMuiTheme({
   palette: {
@@ -49,6 +52,9 @@ const SignInRoute: React.FunctionComponent = () => (
 const MainRoute: React.FunctionComponent = () => (
   <Router>
     <Switch>
+      <Route path="/prescriptions" component={Prescriptions} />
+      <Route path="/medication" component={Medication} />
+      <Route path="/settings" component={Settings} />
       <Route path="/changepassword" component={ChangePassword} />
       <Route path="/" component={Home} />
     </Switch>

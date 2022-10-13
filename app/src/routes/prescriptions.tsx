@@ -24,7 +24,7 @@ function Prescriptions() {
 
   return (
     <Box component="div">
-      
+      <DrawerAppBar />
     </Box>
   );
 }
