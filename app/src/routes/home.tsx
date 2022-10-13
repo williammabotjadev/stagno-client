@@ -53,6 +53,15 @@ export default function Home() {
   return (
     <Grid container>
       <DrawerAppBar />
+      <Typography style={{
+        textAlign: 'center',
+        fontSize: '30px',
+        fontWeight: 'bold',
+        marginTop: '260px',
+        marginBottom: '-240px',
+        marginLeft: '320px',
+        color: "#385399"
+      }}>User Generated Medical Journal</Typography>
       <Options />
     </Grid>
   )

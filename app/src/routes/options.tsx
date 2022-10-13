@@ -6,9 +6,9 @@ import Typography from '@mui/material/Typography';
 import { useHistory } from 'react-router-dom'
 import Link from '@material-ui/core/Link'
 import Button from '@material-ui/core/Button'
-import Prescriptions from '../images/prescriptions.jpg'
+import Symptoms from '../images/symptoms.jpg'
 import Medication from '../images/medication.jpg'
-import Settings from '../images/settings.jpg'
+import Logs from '../images/logs.jpg'
 
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
@@ -79,24 +79,24 @@ export default function Options() {
 
   const history = useHistory()
 
-  const prescriptionsPath = () => {
-    history.push('/prescriptions')
+  const symptomsPath = () => {
+    history.push('/symptoms')
   }
 
   const medicationPath = () => {
     history.push('/medication')
   }
 
-  const settingsPath = () => {
-    history.push('/settings')
+  const logsPath = () => {
+    history.push('/logs')
   }
 
   const images = [
     {
-      url: Prescriptions,
-      title: 'Prescriptions',
+      url: Symptoms,
+      title: 'Symptoms',
       width: '40%',
-      route: prescriptionsPath
+      route: symptomsPath
     },
     {
       url: Medication,
@@ -105,10 +105,10 @@ export default function Options() {
       route: medicationPath
     },
     {
-      url: Settings,
-      title: 'Settings',
+      url: Logs,
+      title: 'Medical Logs',
       width: '30%',
-      route: settingsPath
+      route: logsPath
     },
   ];
 

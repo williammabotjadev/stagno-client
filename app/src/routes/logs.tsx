@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 
 import DrawerAppBar from '../components/homeBar';
 
-function Settings() {
+function Logs() {
   return (
     <Box
       component="form"
@@ -73,4 +73,4 @@ function Settings() {
   );
 }
 
-export default Settings;
+export default Logs;

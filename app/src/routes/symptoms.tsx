@@ -5,7 +5,7 @@ import DrawerAppBar from '../components/homeBar';
 import { Typography } from '@material-ui/core';
 
 
-function Prescriptions() {
+function Symptoms() {
   const [images, setImages] = React.useState([]);
   const [idSubmitted, setIdSubmitted] = React.useState(false);
 
@@ -29,4 +29,4 @@ function Prescriptions() {
   );
 }
 
-export default Prescriptions;
+export default Symptoms;
