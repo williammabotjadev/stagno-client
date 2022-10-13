@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-function Documents() {
+function Medication() {
 
   const [file, setFile] = useState(null);
   const [hasDoc, setHasDoc] = useState(false);
@@ -78,4 +78,4 @@ function Documents() {
   );
 }
 
-export default Documents;
+export default Medication;
