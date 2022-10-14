@@ -9,7 +9,7 @@ export enum AuthStatus {
 }
 
 export interface IAuth {
-  sessionInfo?: { username?: string; email?: string; sub?: string; accessToken?: string; refreshToken?: string }
+  sessionInfo?: { username?: string; email?: string; sub?: string; accessToken?: string; refreshToken?: string; idToken?: string; }
   attrInfo?: any
   authStatus?: AuthStatus
   signInWithEmail?: any
