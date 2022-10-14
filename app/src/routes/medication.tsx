@@ -6,10 +6,25 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import moment from 'moment'
 import { putData } from '../libs/dynamo'
+import uuid from 'react-uuid'
 
 import { AuthContext } from '../contexts/authContext'
 
 function Medication() {
+
+  const [medicationData, setMedicationData] = useState({
+    Id: uuid(),
+    beginOffset: 0,
+    endOffset: -1,
+    score: 0,
+    text: "",
+    category: "",
+    type: "",
+    name: "",
+    nameScore: 0
+  })
+
+  console.log(medicationData.Id)
 
   const auth = useContext(AuthContext)
 

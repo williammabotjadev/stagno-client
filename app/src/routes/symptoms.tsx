@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -6,10 +6,23 @@ import DrawerAppBar from '../components/homeBar';
 import { putData } from '../libs/dynamo'
 import { Typography } from '@material-ui/core';
 import moment from 'moment'
+import uuid from 'react-uuid'
 
 import { AuthContext } from '../contexts/authContext'
 
 function Symptoms() {
+
+  const [medicationData, setMedicationData] = useState({
+    Id: uuid(),
+    beginOffset: 0,
+    endOffset: -1,
+    score: 0,
+    text: "",
+    category: "",
+    type: "",
+    name: "",
+    nameScore: 0
+  })
 
   const auth = useContext(AuthContext)
 
