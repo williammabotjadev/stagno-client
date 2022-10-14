@@ -1,8 +1,8 @@
 import * as AWS from 'aws-sdk'
 
-const docClient = new AWS.DynamoDB.DocumentClient({
-    'region': 'us-east-1',
-})
+AWS.config.update({ region: 'us-east-1' })
+
+const docClient = new AWS.DynamoDB.DocumentClient()
 
 export const fetchData = (tableName: any) => {
     var params = {
