@@ -59,10 +59,14 @@ const AuthProvider = ({ children }: Props) => {
         setSessionInfo({
           accessToken: session.accessToken.jwtToken,
           refreshToken: session.refreshToken.token,
+          idToken: session.idToken.jwtToken,
+          username: session.accessToken.payload.username
         })
         window.localStorage.setItem('accessToken', `${session.accessToken.jwtToken}`)
         window.localStorage.setItem('refreshToken', `${session.refreshToken.token}`)
-        await setAttribute({ Name: 'website', Value: 'https://github.com/dbroadhurst/aws-cognito-react' })
+        window.localStorage.setItem('idToken', `${session.idToken.jwtToken}`)
+        window.localStorage.setItem('username', `${session.accessToken.payload.username}`)
+        await setAttribute({ Name: 'website', Value: 'https://wiredintech.co.za' })
         const attr: any = await getAttributes()
         setAttrInfo(attr)
         setAuthStatus(AuthStatus.SignedIn)
