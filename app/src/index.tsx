@@ -18,7 +18,7 @@ AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID
 })
 
-console.log(process.env.AWS_REGION)
+console.log(process.env)
 
 AWS.config.region = process.env.AWS_REGION
 console.log(AWS.config)
