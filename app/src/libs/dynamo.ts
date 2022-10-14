@@ -1,7 +1,7 @@
 import * as AWS from 'aws-sdk'
 
 const docClient = new AWS.DynamoDB.DocumentClient({
-    region: 'us-east-1',
+    'region': 'us-east-1',
 })
 
 export const fetchData = (tableName: any) => {
