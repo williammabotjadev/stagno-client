@@ -4,23 +4,13 @@ import './index.css'
 import App from './App'
 
 import * as AWS from 'aws-sdk'
-import { ConfigurationOptions } from 'aws-sdk'
-
-const configuration: ConfigurationOptions = {
-    region: process.env.AWS_REGION,
-    secretAccessKey: process.env.AWS_SECRET_KEY,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID
-}
 
 AWS.config.update({
-  region: process.env.AWS_REGION,
-  secretAccessKey: process.env.AWS_SECRET_KEY,
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID
+  "region": process.env.REACT_APP_AWS_REGION,
+  "secretAccessKey": process.env.REACT_APP_AWS_SECRET_KEY,
+  "accessKeyId": process.env.REACT_APP_AWS_ACCESS_KEY_ID
 })
 
-console.log(process.env)
-
-AWS.config.region = process.env.AWS_REGION
 console.log(AWS.config)
 
 ReactDOM.render(
