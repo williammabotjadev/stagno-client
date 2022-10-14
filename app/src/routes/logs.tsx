@@ -1,10 +1,25 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { fetchData } from '../aws/dynamo'
 
 import DrawerAppBar from '../components/homeBar';
 
 function Logs() {
+
+  const fetchDataFromDynamoDb = () => {
+    fetchData('stagno-logs')
+  }
+
+  React.useEffect(() => {
+    fetchDataFromDynamoDb()
+  }, [])
+
   return (
     <Box
       component="form"
@@ -15,60 +30,38 @@ function Logs() {
       autoComplete="off"
     >
       <DrawerAppBar />
-      <div>
-        <TextField
-          required
-          id="filled-required"
-          label="Required"
-          defaultValue="Hello World"
-          variant="filled"
-        />
-        <TextField
-          disabled
-          id="filled-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
-          variant="filled"
-        />
-        <TextField
-          id="filled-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="filled"
-        />
-        <TextField
-          id="filled-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true,
-          }}
-          variant="filled"
-        />
-        <TextField
-          id="filled-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="filled"
-        />
-        <TextField
-          id="filled-search"
-          label="Search field"
-          type="search"
-          variant="filled"
-        />
-        <TextField
-          id="filled-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-          variant="filled"
-        />
-      </div>
+      <Box component="div">
+      <Card style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        marginTop: '264px',
+        padding: '20px',
+        width: '30%',
+        marginLeft: '20px'
+      }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Entry Title
+        </Typography>
+        <Typography variant="h5" component="div">
+          14/10/2022
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          You took 2 Tylenol and 1 Advil.
+        </Typography>
+        <Typography variant="body2">
+          You may have had a headache.
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Recommendations</Button>
+        <Button size="small">Helpful Links</Button>
+      </CardActions>
+    </Card>
+    </Box>
     </Box>
   );
 }
