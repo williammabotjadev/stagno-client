@@ -7,6 +7,7 @@ import { putData } from '../libs/dynamo'
 import { Typography } from '@material-ui/core';
 import moment from 'moment'
 import uuid from 'react-uuid'
+import axios from 'axios'
 
 import { AuthContext } from '../contexts/authContext'
 
@@ -21,12 +22,33 @@ function Symptoms() {
     category: "",
     type: "",
     name: "",
-    nameScore: 0
+    nameScore: 0,
+    title: "",
   })
+
+  const [userText, setUserText] = useState('')
 
   const auth = useContext(AuthContext)
 
   const attributeInfo = auth.attrInfo
+
+  const url = "https://ag33wbjtz2.execute-api.us-east-1.amazonaws.com/api/"
+
+  const generateCompPayload = async () => {
+    const payload = {
+      "userText": userText,
+    }
+    const response = await axios.post(url, payload, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        'Access-Control-Allow-Credentials': 'true',
+      }
+    })
+    console.log(response.data)
+  }
 
   const addSymptomEntry = async () => {
     const symptomData = {
@@ -36,6 +58,10 @@ function Symptoms() {
     
     await putData('stagno-logs' , symptomData)
   };
+
+  React.useEffect(() => {
+    generateCompPayload()
+  }, [])
 
   return (
     <Box component="div">
