@@ -1,27 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import DrawerAppBar from '../components/homeBar';
+import { putData } from '../libs/dynamo'
 import { Typography } from '@material-ui/core';
+import moment from 'moment'
 
+import { AuthContext } from '../contexts/authContext'
 
 function Symptoms() {
-  const [images, setImages] = React.useState([]);
-  const [idSubmitted, setIdSubmitted] = React.useState(false);
 
-  const maxNumber = 69;
+  const auth = useContext(AuthContext)
 
-  const onChange = (imageList: any, addUpdateIndex: any) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
+  const attributeInfo = auth.attrInfo
+
+  const addSymptomEntry = async () => {
+    const symptomData = {
+      userId: attributeInfo[0].Value,
+      date_created: moment().format('MMMM Do YYYY, h:mm:ss a'),
+    }
+    
+    await putData('stagno-logs' , symptomData)
   };
-
-  const submitImages = () => {
-    setIdSubmitted(state => true);
-    console.log(images);
-  }
 
   return (
     <Box component="div">
@@ -71,6 +72,7 @@ function Symptoms() {
             fontSize: '24px',
             marginTop: '40px'
           }}
+          onClick={addSymptomEntry}
         >
           Submit
         </Button>

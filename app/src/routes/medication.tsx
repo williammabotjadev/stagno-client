@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import DrawerAppBar from '../components/homeBar';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import moment from 'moment'
+import { putData } from '../libs/dynamo'
+
+import { AuthContext } from '../contexts/authContext'
 
 function Medication() {
 
-  const [file, setFile] = useState(null);
-  const [hasDoc, setHasDoc] = useState(false);
-  
-  const handleFile = (e: any) => {
-    setHasDoc(true);
-    setFile(file => e.target.files[0]);
-    console.log(e.target.files[0]);
-  }
+  const auth = useContext(AuthContext)
 
-  const submitFile = () => {
-    console.log(file);
-  }
+  const attributeInfo = auth.attrInfo
+
+  const addMedicationEntry = async () => {
+    const symptomData = {
+      userId: attributeInfo[0].Value,
+      date_created: moment().format('MMMM Do YYYY, h:mm:ss a'),
+    }
+    
+    await putData('stagno-logs' , symptomData)
+  };
 
   return (
     <> 
@@ -69,6 +73,7 @@ function Medication() {
             fontSize: '24px',
             marginTop: '40px'
           }}
+          onClick={addMedicationEntry}
         >
           Submit
         </Button>
